@@ -11,12 +11,17 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
 
-    req = request.get_json(silent=True, force=True)
-    res = processRequest(req)
-    res = json.dumps(res, indent=4)
-    r = make_response(res)
-    r.headers['Content-Type'] = 'application/json'
-    return r
+    try :
+        req = request.get_json(silent=True, force=True)
+        res = processRequest(req)
+        res = json.dumps(res, indent=4)
+        r = make_response(res)
+        r.headers['Content-Type'] = 'application/json'
+        return r
+    except :
+        r = make_response("something went wrong")
+        r.headers['Content-Type'] = 'application/json'
+        return r
 
 def processRequest(req):
     # Parsing the POST request body into a dictionary for easy access.
