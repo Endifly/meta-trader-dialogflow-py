@@ -52,6 +52,7 @@ def makeWebhookResult(speech):
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 443))
+    context = ('/opt/certs/ec2-122-248-219-21.ap-southeast-1.compute.amazonaws.com.crt', '/opt/certs/ec2-122-248-219-21.ap-southeast-1.compute.amazonaws.com.key')
 
     print("Starting app on port %d" % port)
 
